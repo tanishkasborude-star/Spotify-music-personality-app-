@@ -9,8 +9,8 @@ Use this checklist to move Soundprint from the current implementation to a verif
 - [x] Spotify PKCE sign-in and mobile token refresh are implemented.
 - [x] iOS widget and Android widget integration are present in Expo configuration.
 - [x] Expo public configuration validates, and Android prebuild generated the widget receiver and resources.
-- [x] Local Git has been initialized and `origin` points to the supplied GitHub repository.
-- [ ] The supplied GitHub `main` currently contains only its initial README commit. The local app files have not been committed or pushed; integrate the README-only remote before the first push.
+- [x] Local Git is initialized, `origin` points to the supplied GitHub repository, and the README-only remote history has been merged with the Soundprint app.
+- [ ] The local app commits are ready to push to GitHub `main`; no app code has been published to the remote yet.
 - [ ] No Vercel project/deployment, EAS project ID, production credentials, native store build, or physical-device widget test has been verified.
 - [ ] Android native compilation is blocked locally: neither Java nor an Android SDK is installed/configured. Use a configured EAS remote build or install the required local toolchain.
 - [ ] `mobile/app.json` still has example Android/iOS IDs and an example iOS widget App Group. Replace them with identifiers you own before creating EAS builds; do not publish with the examples.
