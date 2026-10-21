@@ -17,7 +17,7 @@ npm install
 copy .env.example .env.local
 ```
 
-Set `VITE_SPOTIFY_CLIENT_ID` in `.env.local`. `VITE_SPOTIFY_REDIRECT_URI` is optional; if omitted, the app uses the current page URL. In the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard), add that exact redirect URI to the app settings (for local development, commonly `http://127.0.0.1:5173/` or `http://localhost:5173/`).
+The app owner configures `VITE_SPOTIFY_CLIENT_ID` once in `.env.local` for local development and as a Vercel project environment variable for deployment. Users never enter a Client ID: they choose **Connect Spotify** in Soundprint and continue through Spotify's official authorization page. `VITE_SPOTIFY_REDIRECT_URI` is optional; if omitted, the app uses the current page URL. In the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard), register that exact redirect URI (for local development, commonly `http://127.0.0.1:5173/` or `http://localhost:5173/`).
 
 Configure `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from your Supabase project to enable Soundprint email/password accounts. The Supabase anon key is intended for client applications; never put a Supabase service-role key in this frontend. Enable email/password authentication and set the local/deployed Site URL and allowed redirect URLs in Supabase Auth settings. Users sign in to Soundprint first, then link Spotify with PKCE. Until Supabase is configured, the sample preview is available but account sign-in and Spotify linking are not.
 

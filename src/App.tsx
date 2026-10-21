@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import './App.css'
 import AuthGate from './components/AuthGate'
+import SpotifyConnectPage from './components/SpotifyConnectPage'
 import type { ListeningData, PersonalityResult, SpotifyPlaylist, SpotifyTrack } from './types'
 import { scoreListening } from './lib/scoring'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
@@ -62,6 +63,7 @@ function App() {
   const [authSession, setAuthSession] = useState<Session | null>(null)
   const [authReady, setAuthReady] = useState(!isSupabaseConfigured)
   const [previewMode, setPreviewMode] = useState(!isSupabaseConfigured)
+  const [showSpotifyConnect, setShowSpotifyConnect] = useState(false)
   const [result, setResult] = useState<PersonalityResult | null>(null)
   const [spotifyData, setSpotifyData] = useState<ListeningData | null>(null)
   const [recommendations, setRecommendations] = useState<SpotifyTrack[]>([])
@@ -520,6 +522,15 @@ function App() {
       />
     )
   }
+  if (showSpotifyConnect && authSession) {
+    return (
+      <SpotifyConnectPage
+        configured={isSpotifyConfigured()}
+        onBack={() => setShowSpotifyConnect(false)}
+        onConnect={() => void connect()}
+      />
+    )
+  }
 
   return (
     <main className="app-shell">
@@ -542,7 +553,14 @@ function App() {
           <h1 id="hero-title">Your music<br />has a <em>personality.</em></h1>
           <p className="hero-description">A thoughtful little portrait of the sounds you return to. Connect Spotify and meet your listening DNA.</p>
           <div className="hero-actions">
-            <button className="button button-primary" type="button" onClick={connected ? analyseSpotify : connect} disabled={busy}>
+            <button className="button button-primary" type="button" onClick={connected ? analyseSpotify : () => {
+              if (!authSession) {
+                setPreviewMode(false)
+                setError('Sign in to your Soundprint account before connecting Spotify.')
+              } else {
+                setShowSpotifyConnect(true)
+              }
+            }} disabled={busy}>
               <span className="spotify-glyph" aria-hidden="true">◉</span>
               {busy ? 'LISTENING…' : connected ? 'REFRESH MY PORTRAIT' : 'CONNECT SPOTIFY'}
               <span className="button-arrow" aria-hidden="true">↗</span>
@@ -550,7 +568,7 @@ function App() {
             <button className="button button-text" type="button" onClick={previewDemo}>TRY A SAMPLE <span aria-hidden="true">→</span></button>
           </div>
           <div className="privacy-line"><span aria-hidden="true">✳</span> Private by design. Your listening data stays in this tab.</div>
-          {!isSpotifyConfigured() && <p className="setup-hint">Spotify connection needs a Client ID in <code>.env.local</code>. Try the sample while you set it up.</p>}
+          {!isSpotifyConfigured() && <p className="setup-hint">Spotify sign-in is being set up for this app. You can explore a sample in the meantime.</p>}
         </div>
         <div className="hero-art" aria-label="Abstract sound wave artwork">
           <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" /><div className="art-orbit orbit-three" />

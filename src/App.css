@@ -669,6 +669,61 @@ button:focus-visible, a:focus-visible { outline-color: var(--acid); }
 .auth-privacy { margin-bottom: 0; text-align: center; }
 .auth-loading { color: #c3b5d4; font: 11px var(--mono); letter-spacing: .6px; }
 
+.spotify-connect-shell {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  padding: 32px 20px;
+  place-items: center;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 15% 15%, #59347540, transparent 35rem),
+    radial-gradient(ellipse at 90% 85%, #27345838, transparent 36rem),
+    #0c0b12;
+}
+.spotify-connect-brand { position: absolute; top: 30px; left: clamp(20px, 6vw, 78px); color: var(--ink); }
+.spotify-connect-card {
+  width: min(100%, 490px);
+  padding: clamp(27px, 5vw, 48px);
+  border: 1px solid #40364d;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #1a1624f2, #100f17f5);
+  box-shadow: 0 28px 90px #0302079c, inset 0 1px #ffffff0a;
+  animation: card-reveal .65s cubic-bezier(.2,.75,.25,1) both;
+}
+.spotify-connect-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 26px;
+  place-items: center;
+  border: 1px solid #8ee5ad70;
+  border-radius: 50%;
+  background: #1c3027;
+  color: #7bf0a9;
+  font-size: 27px;
+}
+.spotify-connect-card h1 {
+  margin: 18px 0 14px;
+  color: #f8f4ff;
+  font-size: clamp(42px, 8vw, 58px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -2.8px;
+}
+.spotify-connect-card h1 em { color: #c3a7ff; }
+.spotify-connect-copy { margin: 0; color: #b0aabd; font-size: 13px; line-height: 1.7; }
+.spotify-access-list { margin: 25px 0 22px; padding: 17px; border: 1px solid #393242; background: #111019; }
+.spotify-access-list .mini-label { margin: 0 0 11px; color: #c3b5d4; }
+.spotify-access-list p:not(.mini-label) { display: flex; gap: 9px; margin: 8px 0 0; color: #e4ddec; font-size: 11px; line-height: 1.5; }
+.spotify-access-list p span { color: #7bf0a9; }
+.spotify-connect-action { width: 100%; justify-content: space-between; }
+.spotify-connect-unavailable { margin: 0; padding: 13px; border-left: 2px solid var(--acid); background: #d8ff760d; color: #e1f5bd; font-size: 11px; line-height: 1.6; }
+.spotify-connect-privacy { margin: 15px 0 0; color: #aaa5b8; font-size: 10px; line-height: 1.6; text-align: center; }
+.spotify-connect-back { display: block; margin: 22px auto 0; border: 0; background: transparent; color: #c5bfd0; cursor: pointer; font: 9px var(--mono); letter-spacing: .7px; }
+.spotify-connect-back:hover { color: var(--acid); }
+
 .recommendations-section {
   padding: 60px 10.2% 68px;
   border-top: 1px solid var(--line);
@@ -768,6 +823,8 @@ button:focus-visible, a:focus-visible { outline-color: var(--acid); }
   .account-button, .account-preview { padding: 7px; font-size: 7px; }
   .auth-brand { top: 18px; left: 20px; }
   .auth-panel { padding: 25px 20px; }
+  .spotify-connect-brand { top: 18px; left: 20px; }
+  .spotify-connect-card { padding: 25px 20px; }
   .recommendations-section { padding: 42px 6% 55px; }
   .recommendations-heading { align-items: start; flex-direction: column; }
   .recommendations-heading .button { width: 100%; }

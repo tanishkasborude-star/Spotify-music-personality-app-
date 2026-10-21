@@ -198,7 +198,7 @@ export function hasSpotifySession() {
 }
 
 export async function beginSpotifyLogin() {
-  if (!clientId()) throw new Error('Add your Spotify client ID to .env.local to connect Spotify.')
+  if (!clientId()) throw new Error('Spotify sign-in is not enabled for this Soundprint app yet.')
   const verifierBytes = crypto.getRandomValues(new Uint8Array(64))
   const verifier = base64Url(verifierBytes)
   const state = base64Url(crypto.getRandomValues(new Uint8Array(24)))

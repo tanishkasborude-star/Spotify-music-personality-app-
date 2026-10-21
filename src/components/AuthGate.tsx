@@ -19,7 +19,7 @@ export default function AuthGate({ onPreview, onSignedIn, initialError = '' }: A
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!supabase) {
-      setError('Configure Supabase in .env.local before creating an account or signing in.')
+      setError('Soundprint account access is not configured yet. Add your Supabase project URL and anon key to .env.local, then restart the dev server.')
       return
     }
     setBusy(true)
@@ -64,12 +64,14 @@ export default function AuthGate({ onPreview, onSignedIn, initialError = '' }: A
           <input id="auth-email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
           <label htmlFor="auth-password">PASSWORD</label>
           <input id="auth-password" type="password" autoComplete={mode === 'sign-in' ? 'current-password' : 'new-password'} minLength={8} required value={password} onChange={(event) => setPassword(event.target.value)} />
-          <button className="button button-primary auth-submit" type="submit" disabled={busy || !isSupabaseConfigured}>
+          <button className="button button-primary auth-submit" type="submit" disabled={busy}>
             {busy ? 'ONE MOMENT…' : mode === 'sign-in' ? 'SIGN IN TO SOUNDPRINT' : 'CREATE MY ACCOUNT'} <span aria-hidden="true">↗</span>
           </button>
         </form>
         {!isSupabaseConfigured && (
-          <p className="auth-config-note">Account sign-in needs Supabase setup. Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to <code>.env.local</code>.</p>
+          <p className="auth-config-note" role="status">
+            Account sign-in needs your Supabase project settings in <code>.env.local</code>. After saving them, restart the dev server. You can still explore with the sample below.
+          </p>
         )}
         <div className="auth-divider"><span>OR EXPLORE FIRST</span></div>
         <button className="button button-outline auth-preview" type="button" onClick={onPreview}>TRY THE SAMPLE WITHOUT AN ACCOUNT <span aria-hidden="true">→</span></button>
