@@ -13,9 +13,10 @@ Use this checklist to move Soundprint from the current implementation to a verif
 - [x] The Soundprint app and documentation have been pushed to GitHub `main`; Vercel deployment remains a separate, unconfigured step.
 - [x] EAS project `@tanishkasborude-star/spotify-personality-companion` is created and linked in `mobile/app.json`.
 - [x] iOS bundle ID and Android application ID are set to `com.tanishkasborude.soundprint`.
+- [x] Android EAS preview build completed successfully; APK: [download from Expo](https://expo.dev/artifacts/eas/Z9Tit3L5vRkaEtPkEtoVH-wnSTqwegSgCWreKqQ-wAw.apk).
 - [ ] No Vercel project/deployment, production provider credentials, completed native build, or physical-device widget test has been verified.
-- [ ] Android preview build was uploaded to EAS but archiving failed once with a temporary Windows `EBUSY` error; retry is running.
-- [ ] Local Android compilation is unavailable because neither Java nor an Android SDK is installed/configured. Use the EAS remote build or install the required local toolchain.
+- [ ] The Android APK has not yet been installed or tested on a physical device.
+- [ ] Local Android compilation is unavailable because neither Java nor an Android SDK is installed/configured. EAS remote build succeeded and can be used for subsequent builds.
 - [ ] Register `group.com.tanishkasborude.soundprint` in the Apple Developer account and verify the signed iOS widget extension receives that entitlement before iOS distribution.
 
 ## 1. Deploy the Vite web app to Vercel
@@ -54,7 +55,7 @@ Use this checklist to move Soundprint from the current implementation to a verif
 - [ ] Register `group.com.tanishkasborude.soundprint` as an App Group with your Apple Developer team and confirm the iOS widget target uses it.
 - [ ] Add production app icon, Android adaptive icon foreground, splash assets, screenshots, support URL, privacy policy URL, and store metadata.
 - [x] Sign in to Expo/EAS, create/link the project, and persist the generated EAS `projectId` and owner in Expo config.
-- [ ] Complete a successful EAS remote Android build; a preview build is currently being attempted.
+- [x] Complete a successful EAS remote Android preview build; install it on a physical device and verify widget behavior before store submission.
 - [ ] Check `mobile/eas.json` build profiles and set any required distribution, credentials, and submit configuration for your release workflow.
 
 ### Production environment
