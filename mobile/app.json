@@ -2,6 +2,7 @@
   "expo": {
     "name": "Spotify Personality",
     "slug": "spotify-personality-companion",
+    "owner": "tanishkasborude-star",
     "scheme": "spotify-personality",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,10 +17,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.spotify.personality"
+      "bundleIdentifier": "com.tanishkasborude.soundprint"
     },
     "android": {
-      "package": "com.example.spotify.personality",
+      "package": "com.tanishkasborude.soundprint",
       "adaptiveIcon": {
         "backgroundColor": "#0D1210"
       }
@@ -33,7 +34,7 @@
       [
         "expo-widgets",
         {
-          "groupIdentifier": "group.com.example.spotify.personality",
+          "groupIdentifier": "group.com.tanishkasborude.soundprint",
           "widgets": [
             {
               "name": "MusicPersonalityWidget",
@@ -52,6 +53,28 @@
       ],
       "./plugins/withAndroidMusicWidget",
       "expo-web-browser"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "ExpoWidgetsTarget",
+                  "bundleIdentifier": "com.tanishkasborude.soundprint.ExpoWidgetsTarget",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.tanishkasborude.soundprint"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "81891e57-6a26-4660-beb5-35c90b068f9b"
+      }
+    }
   }
 }

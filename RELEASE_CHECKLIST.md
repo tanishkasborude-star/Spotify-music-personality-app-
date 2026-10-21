@@ -11,9 +11,12 @@ Use this checklist to move Soundprint from the current implementation to a verif
 - [x] Expo public configuration validates, and Android prebuild generated the widget receiver and resources.
 - [x] Local Git is initialized, `origin` points to the supplied GitHub repository, and the README-only remote history has been merged with the Soundprint app.
 - [x] The Soundprint app and documentation have been pushed to GitHub `main`; Vercel deployment remains a separate, unconfigured step.
-- [ ] No Vercel project/deployment, EAS project ID, production credentials, native store build, or physical-device widget test has been verified.
-- [ ] Android native compilation is blocked locally: neither Java nor an Android SDK is installed/configured. Use a configured EAS remote build or install the required local toolchain.
-- [ ] `mobile/app.json` still has example Android/iOS IDs and an example iOS widget App Group. Replace them with identifiers you own before creating EAS builds; do not publish with the examples.
+- [x] EAS project `@tanishkasborude-star/spotify-personality-companion` is created and linked in `mobile/app.json`.
+- [x] iOS bundle ID and Android application ID are set to `com.tanishkasborude.soundprint`.
+- [ ] No Vercel project/deployment, production provider credentials, completed native build, or physical-device widget test has been verified.
+- [ ] Android preview build was uploaded to EAS but archiving failed once with a temporary Windows `EBUSY` error; retry is running.
+- [ ] Local Android compilation is unavailable because neither Java nor an Android SDK is installed/configured. Use the EAS remote build or install the required local toolchain.
+- [ ] Register `group.com.tanishkasborude.soundprint` in the Apple Developer account and verify the signed iOS widget extension receives that entitlement before iOS distribution.
 
 ## 1. Deploy the Vite web app to Vercel
 
@@ -47,10 +50,11 @@ Use this checklist to move Soundprint from the current implementation to a verif
 
 ### App identity and project
 
-- [ ] Choose the final app name, slug, URL scheme, and permanent IDs. Replace `com.example.spotify.personality` in `mobile/app.json` with an identifier owned by you; keep the iOS bundle ID and Android application ID stable after store publication.
-- [ ] Replace the example iOS widget app-group identifier in `mobile/app.json` with an App Group owned by your Apple Developer team and ensure the iOS widget target uses that same group.
+- [x] Choose the permanent app IDs `com.tanishkasborude.soundprint` and set them in `mobile/app.json`; keep them stable after store publication.
+- [ ] Register `group.com.tanishkasborude.soundprint` as an App Group with your Apple Developer team and confirm the iOS widget target uses it.
 - [ ] Add production app icon, Android adaptive icon foreground, splash assets, screenshots, support URL, privacy policy URL, and store metadata.
-- [ ] From `mobile/`, sign in to Expo/EAS and configure the project (`npx eas-cli login`, then `npx eas-cli build:configure`). Persist the generated EAS `projectId` in Expo config as instructed by the CLI.
+- [x] Sign in to Expo/EAS, create/link the project, and persist the generated EAS `projectId` and owner in Expo config.
+- [ ] Complete a successful EAS remote Android build; a preview build is currently being attempted.
 - [ ] Check `mobile/eas.json` build profiles and set any required distribution, credentials, and submit configuration for your release workflow.
 
 ### Production environment
