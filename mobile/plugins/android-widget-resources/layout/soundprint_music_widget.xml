@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp"
+  android:background="@drawable/soundprint_widget_background">
+
+  <TextView
+    android:id="@+id/widget_archetype"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Your music personality"
+    android:textColor="#7BF0B6"
+    android:textSize="12sp"
+    android:maxLines="1"
+    android:ellipsize="end" />
+
+  <TextView
+    android:id="@+id/widget_track"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:text="Connect Spotify"
+    android:textColor="#F4F8F5"
+    android:textSize="17sp"
+    android:textStyle="bold"
+    android:maxLines="1"
+    android:ellipsize="end" />
+
+  <TextView
+    android:id="@+id/widget_artist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Your next favorite"
+    android:textColor="#9BAAA2"
+    android:textSize="13sp"
+    android:maxLines="1"
+    android:ellipsize="end" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="end"
+    android:orientation="horizontal">
+    <Button
+      android:id="@+id/widget_open"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:minWidth="0dp"
+      android:text="OPEN"
+      android:textSize="11sp" />
+    <Button
+      android:id="@+id/widget_play"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:minWidth="0dp"
+      android:text="PLAY"
+      android:textSize="11sp" />
+    <Button
+      android:id="@+id/widget_pause"
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:minWidth="0dp"
+      android:text="PAUSE"
+      android:textSize="11sp" />
+  </LinearLayout>
+</LinearLayout>

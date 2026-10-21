@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "Spotify Personality",
+    "slug": "spotify-personality-companion",
+    "scheme": "spotify-personality",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "experiments": {
+      "inlineModules": {
+        "watchedDirectories": [
+          "src/widgets/android"
+        ]
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.spotify.personality"
+    },
+    "android": {
+      "package": "com.example.spotify.personality",
+      "adaptiveIcon": {
+        "backgroundColor": "#0D1210"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "name": "Spotify Personality"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-widgets",
+        {
+          "groupIdentifier": "group.com.example.spotify.personality",
+          "widgets": [
+            {
+              "name": "MusicPersonalityWidget",
+              "displayName": "Music Personality",
+              "description": "Your archetype and a song picked for you",
+              "ios": {
+                "supportedFamilies": [
+                  "systemSmall",
+                  "systemMedium"
+                ],
+                "initialLayout": "src/widgets/MusicPersonalityWidget.tsx"
+              }
+            }
+          ]
+        }
+      ],
+      "./plugins/withAndroidMusicWidget",
+      "expo-web-browser"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+:root { font-family: 'DM Sans', Arial, sans-serif; font-synthesis: none; text-rendering: optimizeLegibility; }
+html { min-width: 320px; }
+body { min-width: 320px; min-height: 100vh; }
+#root { min-height: 100vh; }
